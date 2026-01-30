@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For HANSHIKA ❤️</title>
+<title>For HANSHIKA 🌸</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
 
 <style>
+/* --- Body & Card --- */
 body {
   margin: 0;
   background: linear-gradient(#0f0f14, #1a1a22);
@@ -14,6 +15,8 @@ body {
   font-family: Inter;
   text-align: center;
   padding: 40px;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .card {
@@ -23,17 +26,27 @@ body {
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 0 40px rgba(255,255,255,0.05);
+  position: relative;
+  z-index: 2;
 }
 
 h1 {
   font-family: Playfair Display;
   font-size: 32px;
+  position: relative;
+  cursor: pointer;
+}
+h1:hover {
+  text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
 }
 
+/* --- Image & Quote --- */
 img {
   width: 100%;
   border-radius: 16px;
   margin-top: 20px;
+  z-index: 2;
+  position: relative;
 }
 
 .quote {
@@ -43,6 +56,7 @@ img {
   opacity: 0.9;
 }
 
+/* --- Button --- */
 button {
   margin-top: 25px;
   padding: 12px 24px;
@@ -52,12 +66,52 @@ button {
   color: white;
   font-size: 16px;
   cursor: pointer;
+  position: relative;
+}
+button:hover {
+  box-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff4d6d;
+  transform: scale(1.05);
 }
 
 .small {
   margin-top: 18px;
   opacity: 0.7;
   font-size: 14px;
+}
+
+/* --- Floating Hearts --- */
+.heart {
+  position: fixed;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes float {
+  0% {transform: translateY(100vh) translateX(0) rotate(0deg);}
+  100% {transform: translateY(-10vh) translateX(50px) rotate(360deg);}
+}
+
+/* --- Flower petals --- */
+.petal {
+  position: fixed;
+  font-size: 25px;
+  animation: fall linear infinite;
+  pointer-events: none;
+}
+@keyframes fall {
+  0% {top:-5%; left: 0; transform: rotate(0deg);}
+  100% {top:110%; left: 100%; transform: rotate(360deg);}
+}
+
+/* --- Secret Message --- */
+#secret {
+  display: none;
+  background: #ff4d6d;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -66,30 +120,25 @@ button {
 
 <div class="card">
 
-<h1>For HANSHIKA 🌸</h1>
+<h1 onclick="showSecret()">For HANSHIKA 🌸</h1>
 
 <p class="quote">
-Little badmash.  
-Little superstar.  
-Short height — maximum cuteness.  
-Singer. Funny. Fighter. Hardworking.  
-And stronger than she thinks.
+Little badmash. Little superstar. Short height — maximum cuteness. Singer. Funny. Fighter. Hardworking. And stronger than she thinks.
 </p>
 
 <img src="fav.jpg">
 
 <p class="quote">
-When you feel upset — remember this:  
-Even the strongest hearts get tired,  
-but they never stop being beautiful.
+When you feel upset — remember this: Even the strongest hearts get tired, but they never stop being beautiful.
 </p>
 
-<p class="Your laugh deserves its own world tour">
-You don’t just make people laugh —  
-you make moments lighter.
+<p class="quote">
+You don’t just make people laugh — you make moments lighter.
 </p>
 
 <button onclick="playMusic()">Play Your Song 🎵</button>
+
+<div id="secret">💌 Surprise! Always smiling for you 💖</div>
 
 <p class="small">
 Made with care — just to see you smile 🙂
@@ -97,14 +146,51 @@ Made with care — just to see you smile 🙂
 
 </div>
 
+<!-- --- Audio --- -->
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- --- Floating Hearts & Petals --- -->
 <script>
-function playMusic(){
-  document.getElementById("bgm").play();
+// --- Play Music with Fade ---
+function playMusic() {
+  var audio = document.getElementById('bgm');
+  audio.volume = 0;
+  audio.play();
+  var fade = setInterval(function(){
+    if(audio.volume < 1) audio.volume += 0.02;
+    else clearInterval(fade);
+  }, 100);
 }
+
+// --- Show secret message ---
+function showSecret(){
+  var sec = document.getElementById('secret');
+  sec.style.display = 'block';
+}
+
+// --- Floating Hearts ---
+setInterval(function(){
+  var heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.animationDuration = 4 + Math.random()*3 + 's';
+  heart.innerHTML = '❤️';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(), 5000);
+}, 500);
+
+// --- Flower Petals ---
+setInterval(function(){
+  var petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.style.left = Math.random()*100 + 'vw';
+  petal.style.animationDuration = 5 + Math.random()*5 + 's';
+  petal.innerHTML = '🌸';
+  document.body.appendChild(petal);
+  setTimeout(()=>petal.remove(), 10000);
+}, 400);
 </script>
 
 </body>
