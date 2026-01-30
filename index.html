@@ -1,189 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Hanshika ✨</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0f0f0f;
-            color: white;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-            cursor: crosshair;
-        }
+<meta charset="UTF-8">
+<title>For HANSHIKA 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+<style>
+/* --- Body & Card --- */
+body {
+  margin: 0;
+  background: linear-gradient(#0f0f14, #1a1a22);
+  color: #f2f2f2;
+  font-family: Inter;
+  text-align: center;
+  padding: 40px;
+  overflow-x: hidden;
+  position: relative;
+  cursor: none;
+}
 
-        /* Neon Frame */
-        .card {
-            width: 85%;
-            max-width: 380px;
-            background: rgba(15, 15, 15, 0.9);
-            border: 2.5px solid #ff4d4d;
-            border-radius: 40px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 0 25px #ff4d4d, inset 0 0 15px #ff4d4d;
-            position: relative;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            animation: float 3s ease-in-out infinite;
-        }
+.card {
+  max-width: 650px;
+  margin: auto;
+  background: #181820;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.05);
+  position: relative;
+  z-index: 2;
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+h1 {
+  font-family: Playfair Display;
+  font-size: 32px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+h1:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+}
 
-        .main-img {
-            width: 100%;
-            height: 250px;
-            border-radius: 25px;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+.quote {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
 
-        h1 { 
-            font-size: 2rem; 
-            margin: 10px 0; 
-            color: #fff; 
-            text-shadow: 0 0 10px #ff4d4d;
-            letter-spacing: 2px;
-        }
+button {
+  margin-top: 25px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+button:hover {
+  box-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff4d6d;
+  transform: scale(1.1);
+}
+button:active {
+  transform: scale(0.95);
+}
 
-        .tags { margin-bottom: 15px; }
-        .tag {
-            font-size: 0.75rem;
-            background: rgba(255, 77, 77, 0.1);
-            border: 1px solid #ff4d4d;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin: 3px;
-            display: inline-block;
-            color: #ff9999;
-        }
+/* --- Small Text --- */
+.small {
+  margin-top: 18px;
+  opacity: 0.7;
+  font-size: 14px;
+}
 
-        .message { 
-            font-size: 0.95rem; 
-            color: #eeeeee; 
-            line-height: 1.5;
-            margin: 15px 0;
-        }
+/* --- Floating Hearts --- */
+.heart {
+  position: fixed;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes float {
+  0% {transform: translateY(100vh) translateX(0) rotate(0deg);}
+  100% {transform: translateY(-10vh) translateX(50px) rotate(360deg);}
+}
 
-        .scarf-quote {
-            color: #ff4d4d;
-            font-style: italic;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
+/* --- Petals & Leaves --- */
+.petal, .leaf {
+  position: fixed;
+  font-size: 25px;
+  animation: fall linear infinite;
+  pointer-events: none;
+}
+@keyframes fall {
+  0% {top:-5%; left: 0; transform: rotate(0deg) scale(0.3); opacity:0;}
+  30% {opacity:1;}
+  100% {top:110%; left: 100%; transform: rotate(360deg) scale(0.5); opacity:0;}
+}
 
-        .btn {
-            background: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.6);
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn:hover { transform: scale(1.1); box-shadow: 0 0 25px #ff4d4d; }
+/* --- Sparkles --- */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 15px;
+  opacity: 1;
+  animation: sparkle-fade 0.8s forwards;
+}
+@keyframes sparkle-fade {
+  0% {transform: scale(0.3) rotate(0deg);}
+  50% {transform: scale(1.2) rotate(180deg);}
+  100% {transform: scale(0) rotate(360deg); opacity: 0;}
+}
 
-        .flower {
-            position: absolute;
-            pointer-events: none;
-            z-index: 1;
-            animation: fall linear forwards;
-        }
+/* --- Animated Image --- */
+.animated-image {
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 20px;
+  position: relative;
+  animation: eren-touch 4s ease-in-out infinite;
+  transform-origin: top center;
+  z-index: 1;
+}
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
+@keyframes eren-touch {
+  0%, 100% { transform: rotate(0deg) translateY(0px); }
+  25% { transform: rotate(-2deg) translateY(-2px); }
+  50% { transform: rotate(2deg) translateY(-1px); }
+  75% { transform: rotate(-1deg) translateY(0px); }
+}
 
-        .sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: #ff4d4d;
-            border-radius: 50%;
-            pointer-events: none;
-            box-shadow: 0 0 10px #fff;
-            animation: shrink 0.8s forwards;
-            z-index: 100;
-        }
+.animated-image:hover {
+  animation: hover-glow 1s ease-in-out infinite alternate;
+}
 
-        @keyframes shrink {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
-        }
-    </style>
+@keyframes hover-glow {
+  0% { box-shadow: 0 0 5px #ff4d6d; transform: scale(1); }
+  100% { box-shadow: 0 0 25px #ff4d6d; transform: scale(1.02); }
+}
+
+/* --- Gallery Images --- */
+.gallery-image {
+  width: 80%;
+  border-radius: 12px;
+  display: block;
+  margin: auto;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.gallery-image.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.gallery-image.hide {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* --- Secret Message --- */
+#secret {
+  display: none;
+  background: #ff4d6d;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  animation: fadeIn 1s ease forwards;
+}
+
+#finalMessage {
+  animation: finalPop 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes finalPop {
+  0% {transform: scale(0.5); opacity:0;}
+  60% {transform: scale(1.05); opacity:1;}
+  100% {transform: scale(1); opacity:1;}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="card">
-        <img src="fav.jpg">
-        
-        <h1>Hey HANSHIKA! ✨</h1>
-        
-        <div class="tags">
-            <span class="tag">Badmash 😈</span>
-            <span class="tag">Pretty Singer 🎤</span>
-            <span class="tag">Celebrity 🌟</span>
-            <span class="tag">Short & Cute 🤏</span>
-        </div>
+<div class="card">
 
-        <div class="message">
-            <span class="scarf-quote">"I'll wrap this scarf around you as many times as you want." 🧣</span>
-            To the most hardworking celebrity I know... you might be upset right now, but your smile is worth more than all the Titan powers in the world.
-        </div>
+<h1 onclick="showSecret()">For HANSHIKA 🌸</h1>
 
-        <audio id="favSong" loop>
-            <source src="music.mp3" type="audio/mpeg">
-        </audio>
+<p class="quote">
+Little badmash. Little superstar. Short height — maximum cuteness. Singer. Funny. Fighter. Hardworking. And stronger than she thinks.
+</p>
 
-        <button class="btn" onclick="startEverything()">Click to see her smile! ❤️</button>
-    </div>
+<img src="fav.jpg" class="animated-image">
 
-    <script>
-        document.addEventListener('mousemove', function(e) {
-            let sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            sparkle.style.left = e.pageX + 'px';
-            sparkle.style.top = e.pageY + 'px';
-            document.body.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 800);
-        });
+<p class="quote">
+When you feel upset — remember this: Even the strongest hearts get tired, but they never stop being beautiful.
+</p>
 
-        function createFlower() {
-            const icons = ['🌸', '🌺', '🌹', '🌼', '✨', '🧣'];
-            let f = document.createElement('div');
-            f.classList.add('flower');
-            f.innerText = icons[Math.floor(Math.random() * icons.length)];
-            f.style.left = Math.random() * 100 + 'vw';
-            f.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            f.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            document.body.appendChild(f);
-            setTimeout(() => f.remove(), 5000);
-        }
+<p class="quote">
+You don’t just make people laugh — you make moments lighter.
+</p>
 
-        function startEverything() {
-            let music = document.getElementById('favSong');
-            music.play().catch(e => console.log("Music need user interaction first"));
-            
-            setInterval(createFlower, 200);
-            
-            alert("Hanshika, you're a literal star! 🌟 Your hard work is inspiring, and your 'badmash' energy is the best part of the day. Please don't be upset—you're too pretty to be sad! 😊❤️");
-        }
-    </script>
-</body>
-</html>
+<button onclick="playMusic()">Play Your Song 🎵</button>
+
+<div id="secret">💌 Surprise! Always smiling for you 💖</div>
+
+<p class="small">
+Made with care — just to see you smile 🙂
+</p>
+
+<!-- --- Magic Button Sequence --- -->
+<button id="magicBtn">Click Me! ✨</button>
+
+<div id="gallery" style="display:none; margin-top:20px;">
+  <img src="img1.jpg" class="gallery-image">
+</div>
+
+<button id="nextBtn" style="display:none; margin-top:15
