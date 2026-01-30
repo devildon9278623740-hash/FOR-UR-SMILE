@@ -3,156 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>For Chhoti Celebrity 🌸</title>
+<title>For Hanshika 🌸</title>
 
 <style>
 body {
   margin:0;
-  background: linear-gradient(180deg,#0f0c29,#302b63,#24243e);
-  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #0f0f1a, #1b1b2f);
   color:white;
+  font-family: 'Segoe UI', sans-serif;
   text-align:center;
+  padding:30px;
 }
 
 .card {
-  margin:40px auto;
-  padding:20px;
+  background:#1f2235;
+  border-radius:20px;
+  padding:25px;
   max-width:420px;
-  background:#111827;
-  border-radius:16px;
-  box-shadow:0 0 30px rgba(255,255,255,0.08);
+  margin:auto;
+  box-shadow:0 0 30px rgba(255,105,180,0.25);
 }
 
 img {
   width:100%;
-  border-radius:14px;
-  transition: all 0.6s ease;
+  border-radius:16px;
+  margin-top:15px;
+  transition:all .6s ease;
 }
 
-/* animations */
+.hidden { display:none; }
 
-.fade {
-  animation: fadeIn 1s forwards;
-}
-
-.zoomFinal {
-  animation: zoomIn 1.2s forwards;
-}
-
-@keyframes fadeIn {
-  from {opacity:0; transform:scale(0.95);}
-  to {opacity:1; transform:scale(1);}
+.zoom {
+  animation: zoomIn 1s ease forwards;
 }
 
 @keyframes zoomIn {
-  from {opacity:0; transform:scale(0.7);}
-  to {opacity:1; transform:scale(1.15);}
+  from { transform:scale(.6); opacity:0; }
+  to { transform:scale(1); opacity:1; }
 }
 
-/* buttons */
+.fadeOut {
+  animation: fadeOut .5s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity:0; transform:scale(.8); }
+}
 
 button {
-  background:#ff4d6d;
+  margin-top:18px;
+  padding:12px 20px;
   border:none;
-  padding:12px 18px;
-  margin:8px;
-  border-radius:999px;
+  border-radius:25px;
+  background:#ff4d88;
   color:white;
-  font-size:15px;
+  font-size:16px;
+  cursor:pointer;
 }
 
-/* typewriter */
-
-.typewriter {
-  overflow:hidden;
-  white-space:nowrap;
-  border-right:2px solid #ff4d6d;
-  animation: typing 3s steps(40,end), blink .8s infinite;
+button:hover {
+  background:#ff2e6f;
 }
 
-@keyframes typing {
-  from { width:0 }
-  to { width:100% }
+#typeText {
+  font-size:22px;
+  margin-top:40px;
+  min-height:40px;
 }
-
-@keyframes blink {
-  50% { border-color:transparent }
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="card" id="main">
+<div class="card" id="card">
 
-<h2>For Chhoti Celebrity 🌸</h2>
+<h2>For HANSHIKA 🌸</h2>
+<p>Little badmash. Little superstar. Maximum cuteness.</p>
 
-<p>
-Little badmash. Cute singer. Short height — maximum magic.  
-Stronger than she thinks.
-</p>
+<img id="mainImg" src="fav.jpg">
 
-<img id="gallery" src="img1.jpg">
-
-<p id="quote">
-Like a lotus — you bloom even in difficult waters,
-and still look the most beautiful.
-</p>
-
-<audio id="bgmusic">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button onclick="playMusic()">Play Song 🎵</button>
-<button onclick="nextImage()">Next</button>
-<button onclick="showFinal()">One Last Message</button>
-<button onclick="endAll()">END</button>
+<br>
+<button onclick="start()">Start ✨</button>
+<button onclick="next()" id="nextBtn" class="hidden">Next ➜</button>
+<button onclick="finalStep()" id="finalBtn" class="hidden">One Last Message 💌</button>
+<button onclick="endAll()" id="endBtn" class="hidden">END 🌙</button>
 
 </div>
 
-<div id="endText" style="display:none; font-size:22px; margin-top:120px;">
-  <div class="typewriter">
-    Made by HOTOKE for chhoti celebrity 🌸
-  </div>
-</div>
+<div id="typeText"></div>
+
+<audio id="music" src="music.mp3"></audio>
 
 <script>
-
 let images = ["img1.jpg","img2.jpg","img3.jpg"];
-let i = 0;
+let index = -1;
 
-function playMusic() {
-  document.getElementById("bgmusic").play();
+function start(){
+  document.getElementById("music").play();
+  document.getElementById("nextBtn").classList.remove("hidden");
 }
 
-function nextImage() {
-  if(i < images.length-2){
-    i++;
-    const img = document.getElementById("gallery");
-    img.classList.remove("fade","zoomFinal");
-    void img.offsetWidth;
-    img.src = images[i];
-    img.classList.add("fade");
+function next(){
+  index++;
+  const img = document.getElementById("mainImg");
+
+  if(index < images.length){
+    img.classList.add("fadeOut");
+
+    setTimeout(()=>{
+      img.src = images[index];
+      img.classList.remove("fadeOut");
+      img.classList.add("zoom");
+    },400);
+
+    if(index === images.length-1){
+      document.getElementById("nextBtn").classList.add("hidden");
+      document.getElementById("finalBtn").classList.remove("hidden");
+    }
   }
 }
 
-function showFinal() {
-  i = images.length-1;
-  const img = document.getElementById("gallery");
-  img.classList.remove("fade");
-  void img.offsetWidth;
-  img.src = images[i];
-  img.classList.add("zoomFinal");
+function finalStep(){
+  const img = document.getElementById("mainImg");
+
+  img.classList.add("fadeOut");
+
+  setTimeout(()=>{
+    img.src = "final.jpg";
+    img.classList.remove("fadeOut");
+    img.classList.add("zoom");
+  },400);
+
+  document.getElementById("finalBtn").classList.add("hidden");
+  document.getElementById("endBtn").classList.remove("hidden");
 }
 
-function endAll() {
-  document.getElementById("main").style.display="none";
-  document.getElementById("endText").style.display="block";
-  document.getElementById("bgmusic").pause();
+function endAll(){
+  document.getElementById("card").style.display = "none";
+  document.getElementById("music").pause();
+  typeWriter("made by HOTOKE for chhoti celebrity");
 }
 
+function typeWriter(text){
+  let i = 0;
+  let speed = 60;
+  function type(){
+    if(i < text.length){
+      document.getElementById("typeText").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
 </script>
 
 </body>
