@@ -11,16 +11,21 @@ color:white;
 font-family:Arial;
 text-align:center;
 padding:40px;
+overflow-x:hidden;
 }
 
+/* CARD */
 .card{
 max-width:650px;
 margin:auto;
 background:#181820;
 padding:30px;
 border-radius:20px;
+position:relative;
+z-index:2;
 }
 
+/* BUTTON */
 button{
 padding:12px 22px;
 border:none;
@@ -43,6 +48,33 @@ transition:0.4s;
 #gallery{display:none;}
 #finalMessage{display:none;}
 .gallery-image{opacity:1;transition:0.4s;}
+
+/* 🌸 HEARTS */
+.heart{
+position:fixed;
+top:-20px;
+font-size:18px;
+animation:fall linear forwards;
+pointer-events:none;
+z-index:1;
+}
+
+/* 🌸 FLOWERS */
+.flower{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall linear forwards;
+pointer-events:none;
+z-index:1;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0.3;
+}
+}
 </style>
 </head>
 
@@ -95,7 +127,6 @@ let index=0;
 magicBtn.onclick=function(){
 bgm.currentTime=0;
 bgm.play().catch(()=>{});
-
 gallery.style.display="block";
 nextBtn.style.display="inline-block";
 this.style.display="none";
@@ -121,13 +152,9 @@ finalBtn.style.display="inline-block";
 // FINAL BUTTON
 finalBtn.onclick=function(){
 gallery.style.display="none";
-
 finalMessage.style.display="block";
 finalImg.style.transform="scale(0)";
-setTimeout(()=>{
-finalImg.style.transform="scale(1)";
-},50);
-
+setTimeout(()=>{ finalImg.style.transform="scale(1)"; },50);
 finalBtn.style.display="none";
 endBtn.style.display="inline-block";
 };
@@ -136,9 +163,7 @@ endBtn.style.display="inline-block";
 endBtn.onclick=function(){
 bgm.pause();
 bgm.currentTime=0;
-
 document.body.innerHTML="";
-
 let text="made by HOTOKE for chhoti celebrity";
 let i=0;
 let p=document.createElement("p");
@@ -156,6 +181,32 @@ setTimeout(type,80);
 }
 type();
 };
+
+/* 🌸 FLOATING HEARTS */
+function createHeart(){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),10000);
+}
+
+/* 🌸 FALLING FLOWERS */
+function createFlower(){
+let flower=document.createElement("div");
+flower.className="flower";
+flower.innerHTML="🌸";
+flower.style.left=Math.random()*100+"vw";
+flower.style.animationDuration=(6+Math.random()*6)+"s";
+document.body.appendChild(flower);
+setTimeout(()=>flower.remove(),12000);
+}
+
+/* spawn loops */
+setInterval(createHeart,900);
+setInterval(createFlower,1200);
 </script>
 
 </body>
