@@ -5,7 +5,6 @@
 <title>For HANSHIKA 🌸</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
 <style>
-/* --- Body & Card --- */
 body {
   margin: 0;
   background: linear-gradient(#0f0f14, #1a1a22);
@@ -32,7 +31,6 @@ body {
 h1 {
   font-family: Playfair Display;
   font-size: 32px;
-  position: relative;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -41,12 +39,7 @@ h1:hover {
   text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
 }
 
-.quote {
-  margin-top: 20px;
-  font-size: 18px;
-  line-height: 1.6;
-  opacity: 0.9;
-}
+.quote { margin-top: 20px; font-size: 18px; line-height: 1.6; opacity: 0.9; }
 
 button {
   margin-top: 25px;
@@ -57,313 +50,94 @@ button {
   color: white;
   font-size: 16px;
   cursor: pointer;
-  position: relative;
   transition: all 0.3s ease;
 }
-button:hover {
-  box-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff4d6d;
-  transform: scale(1.1);
-}
-button:active {
-  transform: scale(0.95);
-}
+button:hover { box-shadow: 0 0 20px #ff4d6d,0 0 30px #ff4d6d; transform: scale(1.1);}
+button:active { transform: scale(0.95); }
 
-/* --- Small Text --- */
-.small {
-  margin-top: 18px;
-  opacity: 0.7;
-  font-size: 14px;
-}
+.small { margin-top:18px; opacity:0.7; font-size:14px; }
 
-/* --- Floating Hearts --- */
-.heart {
-  position: fixed;
-  color: #ff4d6d;
-  font-size: 20px;
-  animation: float 5s linear infinite;
-  pointer-events: none;
-}
-@keyframes float {
-  0% {transform: translateY(100vh) translateX(0) rotate(0deg);}
-  100% {transform: translateY(-10vh) translateX(50px) rotate(360deg);}
-}
+.heart { position: fixed; color: #ff4d6d; font-size: 20px; animation: float 5s linear infinite; pointer-events:none;}
+@keyframes float {0% {transform: translateY(100vh) translateX(0) rotate(0deg);} 100% {transform: translateY(-10vh) translateX(50px) rotate(360deg);}}
 
-/* --- Petals & Leaves --- */
-.petal, .leaf {
-  position: fixed;
-  font-size: 25px;
-  animation: fall linear infinite;
-  pointer-events: none;
-}
-@keyframes fall {
-  0% {top:-5%; left: 0; transform: rotate(0deg) scale(0.3); opacity:0;}
-  30% {opacity:1;}
-  100% {top:110%; left: 100%; transform: rotate(360deg) scale(0.5); opacity:0;}
-}
+.petal,.leaf { position: fixed; font-size:25px; animation: fall linear infinite; pointer-events:none;}
+@keyframes fall {0%{top:-5%; left:0; transform: rotate(0deg) scale(0.3); opacity:0;} 30%{opacity:1;} 100%{top:110%; left:100%; transform: rotate(360deg) scale(0.5); opacity:0;}}
 
-/* --- Sparkles --- */
-.sparkle {
-  position: fixed;
-  pointer-events: none;
-  font-size: 15px;
-  opacity: 1;
-  animation: sparkle-fade 0.8s forwards;
-}
-@keyframes sparkle-fade {
-  0% {transform: scale(0.3) rotate(0deg);}
-  50% {transform: scale(1.2) rotate(180deg);}
-  100% {transform: scale(0) rotate(360deg); opacity: 0;}
-}
+.sparkle { position: fixed; pointer-events:none; font-size:15px; opacity:1; animation:sparkle-fade 0.8s forwards;}
+@keyframes sparkle-fade {0%{transform:scale(0.3) rotate(0deg);}50%{transform:scale(1.2) rotate(180deg);}100%{transform:scale(0) rotate(360deg); opacity:0;}}
 
-/* --- Animated Image --- */
-.animated-image {
-  width: 100%;
-  border-radius: 16px;
-  margin-top: 20px;
-  position: relative;
-  animation: eren-touch 4s ease-in-out infinite;
-  transform-origin: top center;
-  z-index: 1;
-}
-@keyframes eren-touch {
-  0%, 100% { transform: rotate(0deg) translateY(0px); }
-  25% { transform: rotate(-2deg) translateY(-2px); }
-  50% { transform: rotate(2deg) translateY(-1px); }
-  75% { transform: rotate(-1deg) translateY(0px); }
-}
-.animated-image:hover {
-  animation: hover-glow 1s ease-in-out infinite alternate;
-}
-@keyframes hover-glow {
-  0% { box-shadow: 0 0 5px #ff4d6d; transform: scale(1); }
-  100% { box-shadow: 0 0 25px #ff4d6d; transform: scale(1.02); }
-}
+.animated-image { width:100%; border-radius:16px; margin-top:20px; position:relative; animation: eren-touch 4s ease-in-out infinite; transform-origin: top center; z-index:1;}
+@keyframes eren-touch {0%,100%{transform:rotate(0deg) translateY(0px);}25%{transform:rotate(-2deg) translateY(-2px);}50%{transform:rotate(2deg) translateY(-1px);}75%{transform:rotate(-1deg) translateY(0px);}}
+.animated-image:hover { animation: hover-glow 1s ease-in-out infinite alternate;}
+@keyframes hover-glow {0%{box-shadow:0 0 5px #ff4d6d; transform:scale(1);}100%{box-shadow:0 0 25px #ff4d6d; transform:scale(1.02);}}
 
-/* --- Gallery Images --- */
-.gallery-image {
-  width: 80%;
-  border-radius: 12px;
-  display: block;
-  margin: auto;
-  opacity: 1;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
+.gallery-image { width:80%; border-radius:12px; display:block; margin:auto; opacity:1; transition: transform 0.5s ease, opacity 0.5s ease;}
 
-/* --- Secret Message --- */
-#secret {
-  display: none;
-  background: #ff4d6d;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 20px;
-  margin-top: 20px;
-  animation: fadeIn 1s ease forwards;
-}
-#finalMessage {
-  display: none;
-  animation: finalPop 0.7s ease forwards;
-}
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-@keyframes finalPop { 0% {transform: scale(0.5); opacity:0;} 60% {transform: scale(1.05); opacity:1;} 100% {transform: scale(1); opacity:1;} }
-
-/* --- Typewriter --- */
-#typewriter {
-  display:inline-block;
-  border-right: 2px solid #ff4d6d;
-  white-space: nowrap;
-  overflow: hidden;
-}
+#finalMessage { display:none; }
+#typewriter { display:inline-block; border-right:2px solid #ff4d6d; white-space:nowrap; overflow:hidden; font-size:18px; color:#ff4d6d; }
 
 </style>
 </head>
-
 <body>
 
 <div class="card">
 
 <h1 onclick="showSecret()">For HANSHIKA 🌸</h1>
 
-<p class="quote">
-Little badmash. Little superstar. Short height — maximum cuteness. Singer. Funny. Fighter. Hardworking. And stronger than she thinks.
-</p>
-
+<p class="quote">Little badmash. Little superstar. Short height — maximum cuteness. Singer. Funny. Fighter. Hardworking. And stronger than she thinks.</p>
 <img src="fav.jpg" class="animated-image">
-
-<p class="quote">
-When you feel upset — remember this: Even the strongest hearts get tired, but they never stop being beautiful.
-</p>
-
-<p class="quote">
-You don’t just make people laugh — you make moments lighter.
-</p>
+<p class="quote">When you feel upset — remember this: Even the strongest hearts get tired, but they never stop being beautiful.</p>
+<p class="quote">You don’t just make people laugh — you make moments lighter.</p>
 
 <div id="secret">💌 Surprise! Always smiling for you 💖</div>
+<p class="small">Made with care — just to see you smile 🙂</p>
 
-<p class="small">
-Made with care — just to see you smile 🙂
-</p>
-
-<!-- --- Magic Button Sequence --- -->
 <button id="magicBtn">Click Me! ✨</button>
 
 <div id="gallery" style="display:none; margin-top:20px;">
   <img src="img1.jpg" class="gallery-image show">
 </div>
-
 <button id="nextBtn" style="display:none; margin-top:15px;">Next Image ➡️</button>
-
 <button id="finalBtn" style="display:none; margin-top:15px;">One Last Message 💌</button>
 
 <div id="finalMessage">
   <img src="final.jpg" style="width:80%; border-radius:12px; display:block; margin:auto;" id="finalImg">
-  <button id="endBtn" style="display:none; margin-top:15px;">See Message ✨</button>
-  <p id="typewriter" style="margin-top:15px; font-size:18px; color:#ff4d6d;"></p>
-  <p style="margin-top:15px; font-size:18px; color:#ff4d6d;">
-    Just like a lotus blooming in the darkest waters, your beauty shines effortlessly 💖
-  </p>
+  <button id="endBtn" style="display:none; margin-top:15px;">END 💐💐 </button>
+  <p id="typewriter"></p>
+  <p style="margin-top:15px; font-size:18px; color:#ff4d6d;">Just like a lotus blooming in the darkest waters, your beauty shines effortlessly 💖</p>
 </div>
 
 </div>
 
-<!-- --- Audio --- -->
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// --- Show secret message ---
+// --- Secret ---
 function showSecret(){ document.getElementById('secret').style.display='block'; }
 
-// --- Floating Hearts ---
-setInterval(function(){
-  var heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.style.left = Math.random()*100 + 'vw';
-  heart.style.animationDuration = 4 + Math.random()*3 + 's';
-  heart.innerHTML = '❤️';
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(), 5000);
-}, 500);
-
-// --- Petals ---
-setInterval(function(){
-  var petal = document.createElement('div');
-  petal.className = 'petal';
-  petal.style.left = Math.random()*100 + 'vw';
-  petal.style.animationDuration = 5 + Math.random()*5 + 's';
-  petal.innerHTML = '🌸';
-  document.body.appendChild(petal);
-  setTimeout(()=>petal.remove(), 10000);
-}, 400);
-
-// --- Leaves ---
-setInterval(function(){
-  var leaf = document.createElement('div');
-  leaf.className = 'leaf';
-  leaf.style.left = Math.random()*100 + 'vw';
-  leaf.style.animationDuration = 7 + Math.random()*6 + 's';
-  leaf.innerHTML = '🍃';
-  document.body.appendChild(leaf);
-  setTimeout(()=>leaf.remove(), 12000);
-}, 700);
-
-// --- Sparkles ---
-function createSparkle(x, y){
-  var sparkle = document.createElement('div');
-  sparkle.className = 'sparkle';
-  sparkle.style.left = x + 'px';
-  sparkle.style.top = y + 'px';
-  sparkle.innerHTML = '✨';
-  document.body.appendChild(sparkle);
-  setTimeout(()=>sparkle.remove(), 800);
-}
+// --- Hearts/Petals/Leaves/Sparkles ---
+setInterval(()=>{let h=document.createElement('div'); h.className='heart'; h.style.left=Math.random()*100+'vw'; h.style.animationDuration=4+Math.random()*3+'s'; h.innerHTML='❤️'; document.body.appendChild(h); setTimeout(()=>h.remove(),5000);},500);
+setInterval(()=>{let p=document.createElement('div'); p.className='petal'; p.style.left=Math.random()*100+'vw'; p.style.animationDuration=5+Math.random()*5+'s'; p.innerHTML='🌸'; document.body.appendChild(p); setTimeout(()=>p.remove(),10000);},400);
+setInterval(()=>{let l=document.createElement('div'); l.className='leaf'; l.style.left=Math.random()*100+'vw'; l.style.animationDuration=7+Math.random()*6+'s'; l.innerHTML='🍃'; document.body.appendChild(l); setTimeout(()=>l.remove(),12000);},700);
+function createSparkle(x,y){let s=document.createElement('div'); s.className='sparkle'; s.style.left=x+'px'; s.style.top=y+'px'; s.innerHTML='✨'; document.body.appendChild(s); setTimeout(()=>s.remove(),800);}
 document.addEventListener('mousemove', e=>createSparkle(e.clientX,e.clientY));
 document.addEventListener('touchmove', e=>createSparkle(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
 
-// --- Magic Button Sequence ---
-let images = ['img1.jpg','img2.jpg','img3.jpg']; 
-let currentIndex = 0;
-
+// --- Magic Button ---
+let images=['img1.jpg','img2.jpg','img3.jpg']; let currentIndex=0;
 document.getElementById('magicBtn').addEventListener('click', function(){
-  // play music
-  var audio = document.getElementById('bgm');
-  audio.volume = 0;
-  audio.play().catch(()=>{}); 
-  var fade = setInterval(function(){
-    if(audio.volume < 1) audio.volume += 0.02;
-    else clearInterval(fade);
-  }, 100);
-
-  // sparkle burst
-  for(let i=0;i<20;i++){
-    let sparkle = document.createElement('div');
-    sparkle.className='sparkle';
-    sparkle.style.left = Math.random()*window.innerWidth+'px';
-    sparkle.style.top = Math.random()*window.innerHeight+'px';
-    sparkle.innerHTML='✨';
-    document.body.appendChild(sparkle);
-    setTimeout(()=>sparkle.remove(),800);
-  }
-
+  let audio=document.getElementById('bgm'); audio.volume=0; audio.play().catch(()=>{}); let fade=setInterval(()=>{if(audio.volume<1) audio.volume+=0.02; else clearInterval(fade);},100);
+  for(let i=0;i<20;i++){let s=document.createElement('div'); s.className='sparkle'; s.style.left=Math.random()*window.innerWidth+'px'; s.style.top=Math.random()*window.innerHeight+'px'; s.innerHTML='✨'; document.body.appendChild(s); setTimeout(()=>s.remove(),800);}
   document.getElementById('gallery').style.display='block';
-  document.querySelector('.gallery-image').src = images[currentIndex];
+  document.querySelector('.gallery-image').src=images[currentIndex];
   document.getElementById('nextBtn').style.display='inline-block';
   this.style.display='none';
 });
 
-// --- Next Image Button with fade effect ---
+// --- Next Image ---
 document.getElementById('nextBtn').addEventListener('click', function(){
-  let imgEl = document.querySelector('.gallery-image');
-  imgEl.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-  imgEl.style.opacity = 0;
-  imgEl.style.transform = "scale(0.8)";
-  setTimeout(()=>{
-    currentIndex++;
-    imgEl.src = images[currentIndex];
-    imgEl.style.opacity = 1;
-    imgEl.style.transform = "scale(1)";
-    if(currentIndex >= images.length-1){
-      this.style.display='none';
-      document.getElementById('finalBtn').style.display='inline-block';
-    }
-  }, 500);
-});
-
-// --- Final Message Button with zoom effect ---
-document.getElementById('finalBtn').addEventListener('click', function(){
-  let finalDiv = document.getElementById('finalMessage');
-  let finalImg = document.getElementById('finalImg');
-  finalDiv.style.display='block';
-  finalImg.style.transform = "scale(0)";
-  finalImg.style.opacity = 0;
-  finalImg.style.transition = "transform 1s ease, opacity 1s ease";
-  setTimeout(()=>{
-    finalImg.style.transform = "scale(1)";
-    finalImg.style.opacity = 1;
-  }, 100);
-  this.style.display='none';
-  document.getElementById('endBtn').style.display='inline-block';
-});
-
-// --- Ending Button with Typewriter effect ---
-document.getElementById('endBtn').addEventListener('click', function(){
-  this.style.display='none';
-  let i = 0;
-  let txt = "made by HOTOKE for chhoti celebrity";
-  let speed = 80; // ms per character
-  let typeEl = document.getElementById('typewriter');
-  typeEl.style.display='inline-block';
-  
-  function typeWriter(){
-    if(i < txt.length){
-      typeEl.innerHTML += txt.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-  typeWriter();
-});
-</script>
-
-</body>
-</html>
+  let imgEl=document.querySelector('.gallery-image');
+  imgEl.style.transition="opacity 0.5s ease, transform 0.5s ease";
+  imgEl.style.opacity=0; imgEl.style.transform="
