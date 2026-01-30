@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>For HANSHIKA 🌸</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
 
 <style>
@@ -17,8 +16,10 @@ body {
   padding: 40px;
   overflow-x: hidden;
   position: relative;
+  cursor: none; /* Hide cursor for sparkle magic */
 }
 
+/* --- Card --- */
 .card {
   max-width: 650px;
   margin: auto;
@@ -40,7 +41,6 @@ h1:hover {
   text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
 }
 
-/* --- Image & Quote --- */
 img {
   width: 100%;
   border-radius: 16px;
@@ -56,7 +56,6 @@ img {
   opacity: 0.9;
 }
 
-/* --- Button --- */
 button {
   margin-top: 25px;
   padding: 12px 24px;
@@ -92,16 +91,31 @@ button:hover {
   100% {transform: translateY(-10vh) translateX(50px) rotate(360deg);}
 }
 
-/* --- Flower petals --- */
-.petal {
+/* --- Flower Petals & Leaves --- */
+.petal, .leaf {
   position: fixed;
   font-size: 25px;
   animation: fall linear infinite;
   pointer-events: none;
 }
 @keyframes fall {
-  0% {top:-5%; left: 0; transform: rotate(0deg);}
-  100% {top:110%; left: 100%; transform: rotate(360deg);}
+  0% {top:-5%; left: 0; transform: rotate(0deg) scale(0.3); opacity:0;}
+  30% {opacity:1;}
+  100% {top:110%; left: 100%; transform: rotate(360deg) scale(0.5); opacity:0;}
+}
+
+/* --- Sparkle --- */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 15px;
+  opacity: 1;
+  animation: sparkle-fade 0.8s forwards;
+}
+@keyframes sparkle-fade {
+  0% {transform: scale(0.3) rotate(0deg);}
+  50% {transform: scale(1.2) rotate(180deg);}
+  100% {transform: scale(0) rotate(360deg); opacity: 0;}
 }
 
 /* --- Secret Message --- */
@@ -151,7 +165,7 @@ Made with care — just to see you smile 🙂
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- --- Floating Hearts & Petals --- -->
+<!-- --- Floating Hearts, Petals, Leaves, Sparkles --- -->
 <script>
 // --- Play Music with Fade ---
 function playMusic() {
@@ -191,6 +205,36 @@ setInterval(function(){
   document.body.appendChild(petal);
   setTimeout(()=>petal.remove(), 10000);
 }, 400);
+
+// --- Leaves ---
+setInterval(function(){
+  var leaf = document.createElement('div');
+  leaf.className = 'leaf';
+  leaf.style.left = Math.random()*100 + 'vw';
+  leaf.style.animationDuration = 7 + Math.random()*6 + 's';
+  leaf.innerHTML = '🍃';
+  document.body.appendChild(leaf);
+  setTimeout(()=>leaf.remove(), 12000);
+}, 700);
+
+// --- Sparkles following cursor/tap ---
+function createSparkle(x, y){
+  var sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  sparkle.style.left = x + 'px';
+  sparkle.style.top = y + 'px';
+  sparkle.innerHTML = '✨';
+  document.body.appendChild(sparkle);
+  setTimeout(()=>sparkle.remove(), 800);
+}
+
+document.addEventListener('mousemove', function(e){
+  createSparkle(e.clientX, e.clientY);
+});
+document.addEventListener('touchmove', function(e){
+  var touch = e.touches[0];
+  createSparkle(touch.clientX, touch.clientY);
+}, {passive:true});
 </script>
 
 </body>
