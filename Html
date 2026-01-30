@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For HANSHIKA ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(#0f0f14, #1a1a22);
+  color: #f2f2f2;
+  font-family: Inter;
+  text-align: center;
+  padding: 40px;
+}
+
+.card {
+  max-width: 650px;
+  margin: auto;
+  background: #181820;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.05);
+}
+
+h1 {
+  font-family: Playfair Display;
+  font-size: 32px;
+}
+
+img {
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.quote {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.small {
+  margin-top: 18px;
+  opacity: 0.7;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>For HANSHIKA 🌸</h1>
+
+<p class="quote">
+Little badmash.  
+Little superstar.  
+Short height — maximum cuteness.  
+Singer. Funny. Fighter. Hardworking.  
+And stronger than she thinks.
+</p>
+
+<img src="fav.jpg">
+
+<p class="quote">
+When you feel upset — remember this:  
+Even the strongest hearts get tired,  
+but they never stop being beautiful.
+</p>
+
+<p class="Your laugh deserves its own world tour">
+You don’t just make people laugh —  
+you make moments lighter.
+</p>
+
+<button onclick="playMusic()">Play Your Song 🎵</button>
+
+<p class="small">
+Made with care — just to see you smile 🙂
+</p>
+
+</div>
+
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic(){
+  document.getElementById("bgm").play();
+}
+</script>
+
+</body>
+</html>
