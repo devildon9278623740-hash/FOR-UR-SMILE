@@ -1,161 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Hanshika 🌸</title>
+<title>For Her 🌸</title>
 
 <style>
-body {
-  margin:0;
-  background: linear-gradient(to bottom, #0f0f1a, #1b1b2f);
-  color:white;
-  font-family: 'Segoe UI', sans-serif;
-  text-align:center;
-  padding:30px;
+body{
+background:#0f0f14;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:40px;
 }
 
-.card {
-  background:#1f2235;
-  border-radius:20px;
-  padding:25px;
-  max-width:420px;
-  margin:auto;
-  box-shadow:0 0 30px rgba(255,105,180,0.25);
+.card{
+max-width:650px;
+margin:auto;
+background:#181820;
+padding:30px;
+border-radius:20px;
 }
 
-img {
-  width:100%;
-  border-radius:16px;
-  margin-top:15px;
-  transition:all .6s ease;
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+margin-top:18px;
+cursor:pointer;
 }
 
-.hidden { display:none; }
-
-.zoom {
-  animation: zoomIn 1s ease forwards;
+img{
+width:90%;
+border-radius:14px;
+margin-top:18px;
+transition:0.4s;
 }
 
-@keyframes zoomIn {
-  from { transform:scale(.6); opacity:0; }
-  to { transform:scale(1); opacity:1; }
-}
-
-.fadeOut {
-  animation: fadeOut .5s forwards;
-}
-
-@keyframes fadeOut {
-  to { opacity:0; transform:scale(.8); }
-}
-
-button {
-  margin-top:18px;
-  padding:12px 20px;
-  border:none;
-  border-radius:25px;
-  background:#ff4d88;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-
-button:hover {
-  background:#ff2e6f;
-}
-
-#typeText {
-  font-size:22px;
-  margin-top:40px;
-  min-height:40px;
-}
+#secret{display:none;margin-top:10px;color:#ff4d6d;}
+#gallery{display:none;}
+#finalMessage{display:none;}
+.gallery-image{opacity:1;transition:0.4s;}
 </style>
 </head>
 
 <body>
 
-<div class="card" id="card">
+<div class="card">
 
-<h2>For HANSHIKA 🌸</h2>
-<p>Little badmash. Little superstar. Maximum cuteness.</p>
+<h1 onclick="showSecret()">For Chhoti Celebrity 🌸</h1>
 
-<img id="mainImg" src="fav.jpg">
+<p>Little badmash. Pretty. Funny. Singer. Hardworking. Short but super cute.</p>
 
-<br>
-<button onclick="start()">Start ✨</button>
-<button onclick="next()" id="nextBtn" class="hidden">Next ➜</button>
-<button onclick="finalStep()" id="finalBtn" class="hidden">One Last Message 💌</button>
-<button onclick="endAll()" id="endBtn" class="hidden">END 🌙</button>
+<img src="fav.jpg">
+
+<p>Even when upset — you shine like a lotus in dark water 💖</p>
+
+<div id="secret">💌 Always smiling for you</div>
+
+<button id="magicBtn">Click Me ✨</button>
+
+<div id="gallery">
+<img src="img1.jpg" class="gallery-image">
+</div>
+
+<button id="nextBtn" style="display:none;">Next Image ➡️</button>
+<button id="finalBtn" style="display:none;">One Last Message 💌</button>
+
+<div id="finalMessage">
+<img src="final.jpg" id="finalImg">
+<p style="color:#ff4d6d;">
+Just like a lotus blooming in dark waters — your beauty shines effortlessly 💐
+</p>
+<button id="endBtn" style="display:none;">END 💐</button>
+</div>
 
 </div>
 
-<div id="typeText"></div>
-
-<audio id="music" src="music.mp3"></audio>
+<audio id="bgm" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-let images = ["img1.jpg","img2.jpg","img3.jpg"];
-let index = -1;
-
-function start(){
-  document.getElementById("music").play();
-  document.getElementById("nextBtn").classList.remove("hidden");
+function showSecret(){
+document.getElementById("secret").style.display="block";
 }
 
-function next(){
-  index++;
-  const img = document.getElementById("mainImg");
+let images=["img1.jpg","img2.jpg","img3.jpg"];
+let index=0;
 
-  if(index < images.length){
-    img.classList.add("fadeOut");
+// START BUTTON
+magicBtn.onclick=function(){
+bgm.currentTime=0;
+bgm.play().catch(()=>{});
 
-    setTimeout(()=>{
-      img.src = images[index];
-      img.classList.remove("fadeOut");
-      img.classList.add("zoom");
-    },400);
+gallery.style.display="block";
+nextBtn.style.display="inline-block";
+this.style.display="none";
+};
 
-    if(index === images.length-1){
-      document.getElementById("nextBtn").classList.add("hidden");
-      document.getElementById("finalBtn").classList.remove("hidden");
-    }
-  }
+// NEXT BUTTON
+nextBtn.onclick=function(){
+let img=document.querySelector(".gallery-image");
+img.style.opacity=0;
+
+setTimeout(()=>{
+index++;
+img.src=images[index];
+img.style.opacity=1;
+
+if(index>=images.length-1){
+nextBtn.style.display="none";
+finalBtn.style.display="inline-block";
 }
+},400);
+};
 
-function finalStep(){
-  const img = document.getElementById("mainImg");
+// FINAL BUTTON
+finalBtn.onclick=function(){
+gallery.style.display="none";
 
-  img.classList.add("fadeOut");
+finalMessage.style.display="block";
+finalImg.style.transform="scale(0)";
+setTimeout(()=>{
+finalImg.style.transform="scale(1)";
+},50);
 
-  setTimeout(()=>{
-    img.src = "final.jpg";
-    img.classList.remove("fadeOut");
-    img.classList.add("zoom");
-  },400);
+finalBtn.style.display="none";
+endBtn.style.display="inline-block";
+};
 
-  document.getElementById("finalBtn").classList.add("hidden");
-  document.getElementById("endBtn").classList.remove("hidden");
+// END BUTTON
+endBtn.onclick=function(){
+bgm.pause();
+bgm.currentTime=0;
+
+document.body.innerHTML="";
+
+let text="made by HOTOKE for chhoti celebrity";
+let i=0;
+let p=document.createElement("p");
+p.style.fontSize="24px";
+p.style.color="#ff4d6d";
+p.style.marginTop="120px";
+document.body.appendChild(p);
+
+function type(){
+if(i<text.length){
+p.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,80);
 }
-
-function endAll(){
-  document.getElementById("card").style.display = "none";
-  document.getElementById("music").pause();
-  typeWriter("made by HOTOKE for chhoti celebrity");
 }
-
-function typeWriter(text){
-  let i = 0;
-  let speed = 60;
-  function type(){
-    if(i < text.length){
-      document.getElementById("typeText").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    }
-  }
-  type();
-}
+type();
+};
 </script>
 
 </body>
