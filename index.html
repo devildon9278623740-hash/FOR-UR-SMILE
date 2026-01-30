@@ -1,143 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>For HANSHIKA 🌸</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+<title>For Her 🌸</title>
+
 <style>
-body {
-  margin: 0;
-  background: linear-gradient(#0f0f14, #1a1a22);
-  color: #f2f2f2;
-  font-family: Inter;
-  text-align: center;
-  padding: 40px;
-  overflow-x: hidden;
-  position: relative;
-  cursor: none;
+body{
+background:#0f0f14;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:40px;
 }
 
-.card {
-  max-width: 650px;
-  margin: auto;
-  background: #181820;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(255,255,255,0.05);
-  position: relative;
-  z-index: 2;
+.card{
+max-width:650px;
+margin:auto;
+background:#181820;
+padding:30px;
+border-radius:20px;
 }
 
-h1 {
-  font-family: Playfair Display;
-  font-size: 32px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+margin-top:18px;
+cursor:pointer;
 }
-h1:hover {
-  transform: scale(1.05);
-  text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+
+img{
+width:90%;
+border-radius:14px;
+margin-top:18px;
+transition:0.4s;
 }
 
-.quote { margin-top: 20px; font-size: 18px; line-height: 1.6; opacity: 0.9; }
-
-button {
-  margin-top: 25px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 30px;
-  background: #ff4d6d;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-button:hover { box-shadow: 0 0 20px #ff4d6d,0 0 30px #ff4d6d; transform: scale(1.1);}
-button:active { transform: scale(0.95); }
-
-.small { margin-top:18px; opacity:0.7; font-size:14px; }
-
-.heart { position: fixed; color: #ff4d6d; font-size: 20px; animation: float 5s linear infinite; pointer-events:none;}
-@keyframes float {0% {transform: translateY(100vh) translateX(0) rotate(0deg);} 100% {transform: translateY(-10vh) translateX(50px) rotate(360deg);}}
-
-.petal,.leaf { position: fixed; font-size:25px; animation: fall linear infinite; pointer-events:none;}
-@keyframes fall {0%{top:-5%; left:0; transform: rotate(0deg) scale(0.3); opacity:0;} 30%{opacity:1;} 100%{top:110%; left:100%; transform: rotate(360deg) scale(0.5); opacity:0;}}
-
-.sparkle { position: fixed; pointer-events:none; font-size:15px; opacity:1; animation:sparkle-fade 0.8s forwards;}
-@keyframes sparkle-fade {0%{transform:scale(0.3) rotate(0deg);}50%{transform:scale(1.2) rotate(180deg);}100%{transform:scale(0) rotate(360deg); opacity:0;}}
-
-.animated-image { width:100%; border-radius:16px; margin-top:20px; position:relative; animation: eren-touch 4s ease-in-out infinite; transform-origin: top center; z-index:1;}
-@keyframes eren-touch {0%,100%{transform:rotate(0deg) translateY(0px);}25%{transform:rotate(-2deg) translateY(-2px);}50%{transform:rotate(2deg) translateY(-1px);}75%{transform:rotate(-1deg) translateY(0px);}}
-.animated-image:hover { animation: hover-glow 1s ease-in-out infinite alternate;}
-@keyframes hover-glow {0%{box-shadow:0 0 5px #ff4d6d; transform:scale(1);}100%{box-shadow:0 0 25px #ff4d6d; transform:scale(1.02);}}
-
-.gallery-image { width:80%; border-radius:12px; display:block; margin:auto; opacity:1; transition: transform 0.5s ease, opacity 0.5s ease;}
-
-#finalMessage { display:none; }
-#typewriter { display:inline-block; border-right:2px solid #ff4d6d; white-space:nowrap; overflow:hidden; font-size:18px; color:#ff4d6d; }
-
+#secret{display:none;margin-top:10px;color:#ff4d6d;}
+#gallery{display:none;}
+#finalMessage{display:none;}
+.gallery-image{opacity:1;transition:0.4s;}
 </style>
 </head>
+
 <body>
 
 <div class="card">
 
-<h1 onclick="showSecret()">For HANSHIKA 🌸</h1>
+<h1 onclick="showSecret()">For Chhoti Celebrity 🌸</h1>
 
-<p class="quote">Little badmash. Little superstar. Short height — maximum cuteness. Singer. Funny. Fighter. Hardworking. And stronger than she thinks.</p>
-<img src="fav.jpg" class="animated-image">
-<p class="quote">When you feel upset — remember this: Even the strongest hearts get tired, but they never stop being beautiful.</p>
-<p class="quote">You don’t just make people laugh — you make moments lighter.</p>
+<p>Little badmash. Pretty. Funny. Singer. Hardworking. Short but super cute.</p>
 
-<div id="secret">💌 Surprise! Always smiling for you 💖</div>
-<p class="small">Made with care — just to see you smile 🙂</p>
+<img src="fav.jpg">
 
-<button id="magicBtn">Click Me! ✨</button>
+<p>Even when upset — you shine like a lotus in dark water 💖</p>
 
-<div id="gallery" style="display:none; margin-top:20px;">
-  <img src="img1.jpg" class="gallery-image show">
+<div id="secret">💌 Always smiling for you</div>
+
+<button id="magicBtn">Click Me ✨</button>
+
+<div id="gallery">
+<img src="img1.jpg" class="gallery-image">
 </div>
-<button id="nextBtn" style="display:none; margin-top:15px;">Next Image ➡️</button>
-<button id="finalBtn" style="display:none; margin-top:15px;">One Last Message 💌</button>
+
+<button id="nextBtn" style="display:none;">Next Image ➡️</button>
+<button id="finalBtn" style="display:none;">One Last Message 💌</button>
 
 <div id="finalMessage">
-  <img src="final.jpg" style="width:80%; border-radius:12px; display:block; margin:auto;" id="finalImg">
-  <button id="endBtn" style="display:none; margin-top:15px;">END 💐💐 </button>
-  <p id="typewriter"></p>
-  <p style="margin-top:15px; font-size:18px; color:#ff4d6d;">Just like a lotus blooming in the darkest waters, your beauty shines effortlessly 💖</p>
+<img src="final.jpg" id="finalImg">
+<p style="color:#ff4d6d;">
+Just like a lotus blooming in dark waters — your beauty shines effortlessly 💐
+</p>
+<button id="endBtn" style="display:none;">END 💐</button>
 </div>
 
 </div>
 
 <audio id="bgm" loop>
-  <source src="music.mp3" type="audio/mpeg">
+<source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// --- Secret ---
-function showSecret(){ document.getElementById('secret').style.display='block'; }
+function showSecret(){
+document.getElementById("secret").style.display="block";
+}
 
-// --- Hearts/Petals/Leaves/Sparkles ---
-setInterval(()=>{let h=document.createElement('div'); h.className='heart'; h.style.left=Math.random()*100+'vw'; h.style.animationDuration=4+Math.random()*3+'s'; h.innerHTML='❤️'; document.body.appendChild(h); setTimeout(()=>h.remove(),5000);},500);
-setInterval(()=>{let p=document.createElement('div'); p.className='petal'; p.style.left=Math.random()*100+'vw'; p.style.animationDuration=5+Math.random()*5+'s'; p.innerHTML='🌸'; document.body.appendChild(p); setTimeout(()=>p.remove(),10000);},400);
-setInterval(()=>{let l=document.createElement('div'); l.className='leaf'; l.style.left=Math.random()*100+'vw'; l.style.animationDuration=7+Math.random()*6+'s'; l.innerHTML='🍃'; document.body.appendChild(l); setTimeout(()=>l.remove(),12000);},700);
-function createSparkle(x,y){let s=document.createElement('div'); s.className='sparkle'; s.style.left=x+'px'; s.style.top=y+'px'; s.innerHTML='✨'; document.body.appendChild(s); setTimeout(()=>s.remove(),800);}
-document.addEventListener('mousemove', e=>createSparkle(e.clientX,e.clientY));
-document.addEventListener('touchmove', e=>createSparkle(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
+let images=["img1.jpg","img2.jpg","img3.jpg"];
+let index=0;
 
-// --- Magic Button ---
-let images=['img1.jpg','img2.jpg','img3.jpg']; let currentIndex=0;
-document.getElementById('magicBtn').addEventListener('click', function(){
-  let audio=document.getElementById('bgm'); audio.volume=0; audio.play().catch(()=>{}); let fade=setInterval(()=>{if(audio.volume<1) audio.volume+=0.02; else clearInterval(fade);},100);
-  for(let i=0;i<20;i++){let s=document.createElement('div'); s.className='sparkle'; s.style.left=Math.random()*window.innerWidth+'px'; s.style.top=Math.random()*window.innerHeight+'px'; s.innerHTML='✨'; document.body.appendChild(s); setTimeout(()=>s.remove(),800);}
-  document.getElementById('gallery').style.display='block';
-  document.querySelector('.gallery-image').src=images[currentIndex];
-  document.getElementById('nextBtn').style.display='inline-block';
-  this.style.display='none';
-});
+// START BUTTON
+magicBtn.onclick=function(){
+bgm.currentTime=0;
+bgm.play().catch(()=>{});
 
-// --- Next Image ---
-document.getElementById('nextBtn').addEventListener('click', function(){
-  let imgEl=document.querySelector('.gallery-image');
-  imgEl.style.transition="opacity 0.5s ease, transform 0.5s ease";
-  imgEl.style.opacity=0; imgEl.style.transform="
+gallery.style.display="block";
+nextBtn.style.display="inline-block";
+this.style.display="none";
+};
+
+// NEXT BUTTON
+nextBtn.onclick=function(){
+let img=document.querySelector(".gallery-image");
+img.style.opacity=0;
+
+setTimeout(()=>{
+index++;
+img.src=images[index];
+img.style.opacity=1;
+
+if(index>=images.length-1){
+nextBtn.style.display="none";
+finalBtn.style.display="inline-block";
+}
+},400);
+};
+
+// FINAL BUTTON
+finalBtn.onclick=function(){
+gallery.style.display="none";
+
+finalMessage.style.display="block";
+finalImg.style.transform="scale(0)";
+setTimeout(()=>{
+finalImg.style.transform="scale(1)";
+},50);
+
+finalBtn.style.display="none";
+endBtn.style.display="inline-block";
+};
+
+// END BUTTON
+endBtn.onclick=function(){
+bgm.pause();
+bgm.currentTime=0;
+
+document.body.innerHTML="";
+
+let text="made by HOTOKE for chhoti celebrity";
+let i=0;
+let p=document.createElement("p");
+p.style.fontSize="24px";
+p.style.color="#ff4d6d";
+p.style.marginTop="120px";
+document.body.appendChild(p);
+
+function type(){
+if(i<text.length){
+p.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,80);
+}
+}
+type();
+};
+</script>
+
+</body>
+</html>
