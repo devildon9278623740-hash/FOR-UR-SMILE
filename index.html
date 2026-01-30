@@ -145,15 +145,8 @@ button:active {
   border-radius: 12px;
   display: block;
   margin: auto;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-.gallery-image.show {
   opacity: 1;
-  transform: scale(1);
-}
-.gallery-image.hide {
-  opacity: 0;
-  transform: scale(0.8);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 /* --- Secret Message --- */
@@ -167,10 +160,19 @@ button:active {
   animation: fadeIn 1s ease forwards;
 }
 #finalMessage {
+  display: none;
   animation: finalPop 0.7s ease forwards;
 }
 @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 @keyframes finalPop { 0% {transform: scale(0.5); opacity:0;} 60% {transform: scale(1.05); opacity:1;} 100% {transform: scale(1); opacity:1;} }
+
+/* --- Typewriter --- */
+#typewriter {
+  display:inline-block;
+  border-right: 2px solid #ff4d6d;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 </style>
 </head>
@@ -205,15 +207,17 @@ Made with care — just to see you smile 🙂
 <button id="magicBtn">Click Me! ✨</button>
 
 <div id="gallery" style="display:none; margin-top:20px;">
-  <img src="img1.jpg" class="gallery-image">
+  <img src="img1.jpg" class="gallery-image show">
 </div>
 
 <button id="nextBtn" style="display:none; margin-top:15px;">Next Image ➡️</button>
 
 <button id="finalBtn" style="display:none; margin-top:15px;">One Last Message 💌</button>
 
-<div id="finalMessage" style="display:none; margin-top:20px;">
-  <img src="final.jpg" style="width:80%; border-radius:12px; display:block; margin:auto;">
+<div id="finalMessage">
+  <img src="final.jpg" style="width:80%; border-radius:12px; display:block; margin:auto;" id="finalImg">
+  <button id="endBtn" style="display:none; margin-top:15px;">See Message ✨</button>
+  <p id="typewriter" style="margin-top:15px; font-size:18px; color:#ff4d6d;"></p>
   <p style="margin-top:15px; font-size:18px; color:#ff4d6d;">
     Just like a lotus blooming in the darkest waters, your beauty shines effortlessly 💖
   </p>
@@ -281,7 +285,7 @@ let images = ['img1.jpg','img2.jpg','img3.jpg'];
 let currentIndex = 0;
 
 document.getElementById('magicBtn').addEventListener('click', function(){
-  // Play music immediately
+  // play music
   var audio = document.getElementById('bgm');
   audio.volume = 0;
   audio.play().catch(()=>{}); 
@@ -290,7 +294,7 @@ document.getElementById('magicBtn').addEventListener('click', function(){
     else clearInterval(fade);
   }, 100);
 
-  // Sparkle burst
+  // sparkle burst
   for(let i=0;i<20;i++){
     let sparkle = document.createElement('div');
     sparkle.className='sparkle';
@@ -301,37 +305,63 @@ document.getElementById('magicBtn').addEventListener('click', function(){
     setTimeout(()=>sparkle.remove(),800);
   }
 
-  // Show gallery
   document.getElementById('gallery').style.display='block';
   document.querySelector('.gallery-image').src = images[currentIndex];
-
-  // Show next button
   document.getElementById('nextBtn').style.display='inline-block';
   this.style.display='none';
 });
 
-// Next Image Button
+// --- Next Image Button with fade effect ---
 document.getElementById('nextBtn').addEventListener('click', function(){
-  currentIndex++;
-  if(currentIndex >= images.length){
-    this.style.display='none';
-    document.getElementById('finalBtn').style.display='inline-block';
-  } else {
-    let imgEl = document.querySelector('.gallery-image');
-    imgEl.classList.remove('show');
-    imgEl.classList.add('hide');
-    setTimeout(()=>{
-      imgEl.src = images[currentIndex];
-      imgEl.classList.remove('hide');
-      imgEl.classList.add('show');
-    }, 300);
-  }
+  let imgEl = document.querySelector('.gallery-image');
+  imgEl.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  imgEl.style.opacity = 0;
+  imgEl.style.transform = "scale(0.8)";
+  setTimeout(()=>{
+    currentIndex++;
+    imgEl.src = images[currentIndex];
+    imgEl.style.opacity = 1;
+    imgEl.style.transform = "scale(1)";
+    if(currentIndex >= images.length-1){
+      this.style.display='none';
+      document.getElementById('finalBtn').style.display='inline-block';
+    }
+  }, 500);
 });
 
-// Final Message Button
+// --- Final Message Button with zoom effect ---
 document.getElementById('finalBtn').addEventListener('click', function(){
-  document.getElementById('finalMessage').style.display='block';
+  let finalDiv = document.getElementById('finalMessage');
+  let finalImg = document.getElementById('finalImg');
+  finalDiv.style.display='block';
+  finalImg.style.transform = "scale(0)";
+  finalImg.style.opacity = 0;
+  finalImg.style.transition = "transform 1s ease, opacity 1s ease";
+  setTimeout(()=>{
+    finalImg.style.transform = "scale(1)";
+    finalImg.style.opacity = 1;
+  }, 100);
   this.style.display='none';
+  document.getElementById('endBtn').style.display='inline-block';
+});
+
+// --- Ending Button with Typewriter effect ---
+document.getElementById('endBtn').addEventListener('click', function(){
+  this.style.display='none';
+  let i = 0;
+  let txt = "made by HOTOKE for chhoti celebrity";
+  let speed = 80; // ms per character
+  let typeEl = document.getElementById('typewriter');
+  typeEl.style.display='inline-block';
+  
+  function typeWriter(){
+    if(i < txt.length){
+      typeEl.innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  typeWriter();
 });
 </script>
 
