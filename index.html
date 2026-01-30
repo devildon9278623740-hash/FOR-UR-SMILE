@@ -125,18 +125,15 @@ button:active {
   transform-origin: top center;
   z-index: 1;
 }
-
 @keyframes eren-touch {
   0%, 100% { transform: rotate(0deg) translateY(0px); }
   25% { transform: rotate(-2deg) translateY(-2px); }
   50% { transform: rotate(2deg) translateY(-1px); }
   75% { transform: rotate(-1deg) translateY(0px); }
 }
-
 .animated-image:hover {
   animation: hover-glow 1s ease-in-out infinite alternate;
 }
-
 @keyframes hover-glow {
   0% { box-shadow: 0 0 5px #ff4d6d; transform: scale(1); }
   100% { box-shadow: 0 0 25px #ff4d6d; transform: scale(1.02); }
@@ -169,21 +166,12 @@ button:active {
   margin-top: 20px;
   animation: fadeIn 1s ease forwards;
 }
-
 #finalMessage {
   animation: finalPop 0.7s ease forwards;
 }
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes finalPop { 0% {transform: scale(0.5); opacity:0;} 60% {transform: scale(1.05); opacity:1;} 100% {transform: scale(1); opacity:1;} }
 
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
-}
-
-@keyframes finalPop {
-  0% {transform: scale(0.5); opacity:0;}
-  60% {transform: scale(1.05); opacity:1;}
-  100% {transform: scale(1); opacity:1;}
-}
 </style>
 </head>
 
@@ -207,8 +195,6 @@ When you feel upset — remember this: Even the strongest hearts get tired, but 
 You don’t just make people laugh — you make moments lighter.
 </p>
 
-<button onclick="playMusic()">Play Your Song 🎵</button>
-
 <div id="secret">💌 Surprise! Always smiling for you 💖</div>
 
 <p class="small">
@@ -222,4 +208,132 @@ Made with care — just to see you smile 🙂
   <img src="img1.jpg" class="gallery-image">
 </div>
 
-<button id="nextBtn" style="display:none; margin-top:15
+<button id="nextBtn" style="display:none; margin-top:15px;">Next Image ➡️</button>
+
+<button id="finalBtn" style="display:none; margin-top:15px;">One Last Message 💌</button>
+
+<div id="finalMessage" style="display:none; margin-top:20px;">
+  <img src="final.jpg" style="width:80%; border-radius:12px; display:block; margin:auto;">
+  <p style="margin-top:15px; font-size:18px; color:#ff4d6d;">
+    Just like a lotus blooming in the darkest waters, your beauty shines effortlessly 💖
+  </p>
+</div>
+
+</div>
+
+<!-- --- Audio --- -->
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// --- Show secret message ---
+function showSecret(){ document.getElementById('secret').style.display='block'; }
+
+// --- Floating Hearts ---
+setInterval(function(){
+  var heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.animationDuration = 4 + Math.random()*3 + 's';
+  heart.innerHTML = '❤️';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(), 5000);
+}, 500);
+
+// --- Petals ---
+setInterval(function(){
+  var petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.style.left = Math.random()*100 + 'vw';
+  petal.style.animationDuration = 5 + Math.random()*5 + 's';
+  petal.innerHTML = '🌸';
+  document.body.appendChild(petal);
+  setTimeout(()=>petal.remove(), 10000);
+}, 400);
+
+// --- Leaves ---
+setInterval(function(){
+  var leaf = document.createElement('div');
+  leaf.className = 'leaf';
+  leaf.style.left = Math.random()*100 + 'vw';
+  leaf.style.animationDuration = 7 + Math.random()*6 + 's';
+  leaf.innerHTML = '🍃';
+  document.body.appendChild(leaf);
+  setTimeout(()=>leaf.remove(), 12000);
+}, 700);
+
+// --- Sparkles ---
+function createSparkle(x, y){
+  var sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  sparkle.style.left = x + 'px';
+  sparkle.style.top = y + 'px';
+  sparkle.innerHTML = '✨';
+  document.body.appendChild(sparkle);
+  setTimeout(()=>sparkle.remove(), 800);
+}
+document.addEventListener('mousemove', e=>createSparkle(e.clientX,e.clientY));
+document.addEventListener('touchmove', e=>createSparkle(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
+
+// --- Magic Button Sequence ---
+let images = ['img1.jpg','img2.jpg','img3.jpg']; 
+let currentIndex = 0;
+
+document.getElementById('magicBtn').addEventListener('click', function(){
+  // Play music immediately
+  var audio = document.getElementById('bgm');
+  audio.volume = 0;
+  audio.play().catch(()=>{}); 
+  var fade = setInterval(function(){
+    if(audio.volume < 1) audio.volume += 0.02;
+    else clearInterval(fade);
+  }, 100);
+
+  // Sparkle burst
+  for(let i=0;i<20;i++){
+    let sparkle = document.createElement('div');
+    sparkle.className='sparkle';
+    sparkle.style.left = Math.random()*window.innerWidth+'px';
+    sparkle.style.top = Math.random()*window.innerHeight+'px';
+    sparkle.innerHTML='✨';
+    document.body.appendChild(sparkle);
+    setTimeout(()=>sparkle.remove(),800);
+  }
+
+  // Show gallery
+  document.getElementById('gallery').style.display='block';
+  document.querySelector('.gallery-image').src = images[currentIndex];
+
+  // Show next button
+  document.getElementById('nextBtn').style.display='inline-block';
+  this.style.display='none';
+});
+
+// Next Image Button
+document.getElementById('nextBtn').addEventListener('click', function(){
+  currentIndex++;
+  if(currentIndex >= images.length){
+    this.style.display='none';
+    document.getElementById('finalBtn').style.display='inline-block';
+  } else {
+    let imgEl = document.querySelector('.gallery-image');
+    imgEl.classList.remove('show');
+    imgEl.classList.add('hide');
+    setTimeout(()=>{
+      imgEl.src = images[currentIndex];
+      imgEl.classList.remove('hide');
+      imgEl.classList.add('show');
+    }, 300);
+  }
+});
+
+// Final Message Button
+document.getElementById('finalBtn').addEventListener('click', function(){
+  document.getElementById('finalMessage').style.display='block';
+  this.style.display='none';
+});
+</script>
+
+</body>
+</html>
